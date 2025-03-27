@@ -13,7 +13,7 @@ public class EnemigoBase : IEnemigo
 
     public int Atacar()
     {
-        return 10; // Ataque fijo por simplicidad
+        return 10;
     }
 
     public void RecibirDaño(int daño)

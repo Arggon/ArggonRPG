@@ -13,6 +13,6 @@ public class HabilidadBase : IHabilidad
 
     public int Usar()
     {
-        return DañoBase; // Daño fijo por simplicidad
+        return DañoBase;
     }
 }

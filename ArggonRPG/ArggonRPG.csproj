@@ -9,7 +9,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="src\Application\Services\" />
+      <Content Include="..\.gitignore">
+        <Link>ProjectFiles\.gitignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

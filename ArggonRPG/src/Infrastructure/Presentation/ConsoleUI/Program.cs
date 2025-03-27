@@ -1,28 +1,5 @@
 ﻿namespace ArggonRPG
-{
-    // Interfaz para las habilidades
-
-    // Habilidad concreta
-
-    // Interfaz para los personajes
-
-    // Clase base abstracta para personajes
-
-    // Implementación concreta: Guerrero
-
-    // Interfaz para enemigos
-
-    // Enemigo concreto
-
-    // Patrón Factory para crear personajes
-
-    // Interfaz para comandos del menú
-
-    // Comando para salir
-
-    // Comando para crear personajes
-
-    // Clase principal
+{ 
     public class Program
     {
         private static List<IPersonaje> personajes = new List<IPersonaje>();
