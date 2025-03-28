@@ -14,7 +14,7 @@ public class ComandoCrearPersonaje(List<IPersonaje> personajes, IPersonajeFactor
         var opcion = Console.ReadLine();
 
         if (opcion != "1") return;
-        
+
         Console.Write("Ingresa el nombre de tu personaje: ");
         var nombre = Console.ReadLine();
         if (nombre != null)

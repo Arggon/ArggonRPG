@@ -5,9 +5,9 @@ namespace ArggonRPG.Domain.Entities;
 
 public class EnemigoBase(string nombre, int vida, int dañoBase = 10) : IEnemigo
 {
-    public string Nombre { get; private set; } = nombre;
-    public int Vida { get; private set; } = vida;
     protected int DañoBase { get; set; } = dañoBase;
+    public string Nombre { get; } = nombre;
+    public int Vida { get; private set; } = vida;
 
     public virtual int Atacar()
     {
@@ -18,4 +18,4 @@ public class EnemigoBase(string nombre, int vida, int dañoBase = 10) : IEnemigo
     {
         Vida = Math.Max(0, Vida - daño);
     }
-} 
+}

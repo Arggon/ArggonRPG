@@ -6,4 +6,4 @@ public static class DamageCalculator
     {
         return (int)(dañoBase * multiplicador);
     }
-} 
+}

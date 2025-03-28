@@ -13,4 +13,4 @@ public static class ServicesConfiguration
         services.AddScoped<ComandoCrearPersonaje>();
         return services;
     }
-} 
+}

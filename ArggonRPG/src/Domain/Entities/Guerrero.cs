@@ -1,6 +1,4 @@
-﻿using ArggonRPG.Domain.Entities;
-
-namespace ArggonRPG.Domain.Entities;
+﻿namespace ArggonRPG.Domain.Entities;
 
 public class Guerrero : PersonajeBase
 {

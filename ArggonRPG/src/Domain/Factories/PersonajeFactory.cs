@@ -13,4 +13,4 @@ public class PersonajeFactory : IPersonajeFactory
             _ => throw new ArgumentException($"Clase no válida: {clase}")
         };
     }
-} 
+}
