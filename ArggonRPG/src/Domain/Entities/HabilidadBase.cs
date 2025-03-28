@@ -1,15 +1,11 @@
-﻿namespace ArggonRPG;
+﻿using ArggonRPG.Domain.Interface;
 
-public class HabilidadBase : IHabilidad
+namespace ArggonRPG.Domain.Entities;
+
+public class HabilidadBase(string nombre, int dañoBase) : IHabilidad
 {
-    public string Nombre { get; private set; }
-    public int DañoBase { get; private set; }
-
-    public HabilidadBase(string nombre, int dañoBase)
-    {
-        Nombre = nombre;
-        DañoBase = dañoBase;
-    }
+    public string Nombre { get; private set; } = nombre;
+    private int DañoBase { get; set; } = dañoBase;
 
     public int Usar()
     {

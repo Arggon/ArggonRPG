@@ -1,15 +1,11 @@
-﻿namespace ArggonRPG;
+﻿using ArggonRPG.Domain.Interface;
 
-public class EnemigoBase : IEnemigo
+namespace ArggonRPG.Domain.Entities;
+
+public class EnemigoBase(string nombre, int vida) : IEnemigo
 {
-    public string Nombre { get; private set; }
-    public int Vida { get; private set; }
-
-    public EnemigoBase(string nombre, int vida)
-    {
-        Nombre = nombre;
-        Vida = vida;
-    }
+    public string Nombre { get; private set; } = nombre;
+    public int Vida { get; private set; } = vida;
 
     public int Atacar()
     {

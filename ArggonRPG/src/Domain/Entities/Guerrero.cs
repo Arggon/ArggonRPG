@@ -1,4 +1,4 @@
-﻿namespace ArggonRPG;
+﻿namespace ArggonRPG.Domain.Entities;
 
 public class Guerrero : PersonajeBase
 {

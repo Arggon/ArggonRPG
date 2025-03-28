@@ -1,10 +1,14 @@
-﻿namespace ArggonRPG
-{ 
-    public class Program
-    {
-        private static List<IPersonaje> personajes = new List<IPersonaje>();
+﻿using ArggonRPG.Application.Commands;
+using ArggonRPG.Domain.Entities;
+using ArggonRPG.Domain.Interface;
 
-        public static void Main(string[] args)
+namespace ArggonRPG.Presentation.ConsoleUI
+{ 
+    public abstract class Program
+    {
+        private static readonly List<IPersonaje> Personajes = [];
+
+        public static void Main()
         {
             while (true)
             {
@@ -14,12 +18,12 @@
                 Console.WriteLine("2. Seleccionar Personaje");
                 Console.WriteLine("3. Salir");
                 Console.Write("Selecciona una opción: ");
-                string? opcion = Console.ReadLine();
+                var opcion = Console.ReadLine();
 
                 switch (opcion)
                 {
                     case "1":
-                        new ComandoCrearPersonaje(personajes).Ejecutar();
+                        new ComandoCrearPersonaje(Personajes).Ejecutar();
                         break;
                     case "2":
                         SeleccionarPersonaje();
@@ -37,7 +41,7 @@
 
         private static void SeleccionarPersonaje()
         {
-            if (personajes.Count == 0)
+            if (Personajes.Count == 0)
             {
                 Console.WriteLine("No hay personajes creados. Presiona Enter para volver al menú principal.");
                 Console.ReadLine();
@@ -48,23 +52,24 @@
             {
                 Console.Clear();
                 Console.WriteLine("=== Selección de Personaje ===");
-                for (int i = 0; i < personajes.Count; i++)
+                for (var i = 0; i < Personajes.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {personajes[i].Nombre} ({personajes[i].Clase})");
+                    Console.WriteLine($"{i + 1}. {Personajes[i].Nombre} ({Personajes[i].Clase})");
                 }
-                Console.WriteLine($"{personajes.Count + 1}. Volver al menú anterior");
+                Console.WriteLine($"{Personajes.Count + 1}. Volver al menú anterior");
                 Console.Write("Selecciona una opción: ");
-                string? opcion = Console.ReadLine();
+                var opcion = Console.ReadLine();
 
-                if (int.TryParse(opcion, out int seleccion))
+                if (int.TryParse(opcion, out var seleccion))
                 {
-                    if (seleccion >= 1 && seleccion <= personajes.Count)
+                    if (seleccion >= 1 && seleccion <= Personajes.Count)
                     {
-                        IPersonaje personajeSeleccionado = personajes[seleccion - 1];
+                        IPersonaje personajeSeleccionado = Personajes[seleccion - 1];
                         MenuAccionesPersonaje(personajeSeleccionado);
                         return;
                     }
-                    else if (seleccion == personajes.Count + 1)
+
+                    if (seleccion == Personajes.Count + 1)
                     {
                         return;
                     }
@@ -85,7 +90,7 @@
                 Console.WriteLine("3. Ver estadísticas");
                 Console.WriteLine("4. Volver al menú anterior");
                 Console.Write("Selecciona una opción: ");
-                string? opcion = Console.ReadLine();
+                var opcion = Console.ReadLine();
 
                 switch (opcion)
                 {
@@ -133,7 +138,7 @@
                 Console.WriteLine("1. Atacar");
                 Console.WriteLine("2. Huir");
                 Console.Write("Selecciona una opción: ");
-                string? opcion = Console.ReadLine();
+                var opcion = Console.ReadLine();
 
                 switch (opcion)
                 {
@@ -141,9 +146,9 @@
                         Atacar(jugador, enemigo);
                         if (enemigo.Vida > 0)
                         {
-                            int dañoEnemigo = enemigo.Atacar();
-                            jugador.RecibirDaño(dañoEnemigo);
-                            Console.WriteLine($"El {enemigo.Nombre} te atacó y te hizo {dañoEnemigo} de daño.");
+                            var danoEnemigo = enemigo.Atacar();
+                            jugador.RecibirDaño(danoEnemigo);
+                            Console.WriteLine($"El {enemigo.Nombre} te atacó y te hizo {danoEnemigo} de daño.");
                             Console.WriteLine("Presiona Enter para continuar.");
                             Console.ReadLine();
                         }
@@ -176,22 +181,22 @@
             {
                 Console.Clear();
                 Console.WriteLine("=== Selecciona una habilidad ===");
-                for (int i = 0; i < jugador.Habilidades.Count; i++)
+                for (var i = 0; i < jugador.Habilidades.Count; i++)
                 {
                     Console.WriteLine($"{i + 1}. {jugador.Habilidades[i].Nombre}");
                 }
                 Console.WriteLine($"{jugador.Habilidades.Count + 1}. Volver");
                 Console.Write("Selecciona una opción: ");
-                string? opcion = Console.ReadLine();
+                var opcion = Console.ReadLine();
 
                 if (int.TryParse(opcion, out int seleccion))
                 {
                     if (seleccion >= 1 && seleccion <= jugador.Habilidades.Count)
                     {
-                        IHabilidad habilidad = jugador.Habilidades[seleccion - 1];
-                        int daño = habilidad.Usar();
-                        enemigo.RecibirDaño(daño);
-                        Console.WriteLine($"Usaste {habilidad.Nombre} e hiciste {daño} de daño a {enemigo.Nombre}.");
+                        var habilidad = jugador.Habilidades[seleccion - 1];
+                        var dano = habilidad.Usar();
+                        enemigo.RecibirDaño(dano);
+                        Console.WriteLine($"Usaste {habilidad.Nombre} e hiciste {dano} de daño a {enemigo.Nombre}.");
                         Console.WriteLine("Presiona Enter para continuar.");
                         Console.ReadLine();
                         return;

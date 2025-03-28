@@ -1,19 +1,13 @@
-﻿namespace ArggonRPG;
+﻿using ArggonRPG.Domain.Interface;
 
-public abstract class PersonajeBase : IPersonaje
+namespace ArggonRPG.Domain.Entities;
+
+public abstract class PersonajeBase(string nombre, string clase, int vidaInicial) : IPersonaje
 {
-    public string Nombre { get; private set; }
-    public string Clase { get; private set; }
-    public int Vida { get; protected set; }
-    public List<IHabilidad> Habilidades { get; private set; }
-
-    protected PersonajeBase(string nombre, string clase, int vidaInicial)
-    {
-        Nombre = nombre;
-        Clase = clase;
-        Vida = vidaInicial;
-        Habilidades = new List<IHabilidad>();
-    }
+    public string Nombre { get; private set; } = nombre;
+    public string Clase { get; private set; } = clase;
+    public int Vida { get; protected set; } = vidaInicial;
+    public List<IHabilidad> Habilidades { get; private set; } = new();
 
     public void RecibirDaño(int daño)
     {

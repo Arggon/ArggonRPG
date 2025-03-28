@@ -1,4 +1,4 @@
-﻿namespace ArggonRPG;
+﻿namespace ArggonRPG.Domain.Interface;
 
 public interface IComando
 {

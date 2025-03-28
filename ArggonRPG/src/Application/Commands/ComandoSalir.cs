@@ -1,4 +1,6 @@
-﻿namespace ArggonRPG;
+﻿using ArggonRPG.Domain.Interface;
+
+namespace ArggonRPG.Application.Commands;
 
 public class ComandoSalir : IComando
 {

@@ -1,6 +1,9 @@
-﻿namespace ArggonRPG;
+﻿using ArggonRPG.Domain.Entities;
+using ArggonRPG.Domain.Interface;
 
-public class PersonajeFactory
+namespace ArggonRPG.Domain.Factories;
+
+public abstract class PersonajeFactory
 {
     public static IPersonaje CrearPersonaje(string clase, string nombre)
     {
