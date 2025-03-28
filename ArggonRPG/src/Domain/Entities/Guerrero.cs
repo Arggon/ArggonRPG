@@ -1,4 +1,6 @@
-﻿namespace ArggonRPG.Domain.Entities;
+﻿using ArggonRPG.Domain.Entities.Armas;
+
+namespace ArggonRPG.Domain.Entities;
 
 public class Guerrero : PersonajeBase
 {
@@ -6,5 +8,8 @@ public class Guerrero : PersonajeBase
     {
         Habilidades.Add(new HabilidadConcreta("Golpe Fuerte", 20));
         Habilidades.Add(new HabilidadConcreta("Corte Rápido", 15));
+
+        // Equipar espada por defecto
+        EquiparArma(new Espada());
     }
 }

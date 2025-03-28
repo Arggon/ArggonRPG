@@ -65,10 +65,10 @@ public abstract class Program
         {
             Console.Clear();
             Console.WriteLine("=== Selección de Personaje ===");
-            
+
             for (var i = 0; i < Personajes.Count; i++)
                 Console.WriteLine($"{i + 1}. {Personajes[i].Nombre} ({Personajes[i].Clase})");
-            
+
             Console.WriteLine($"{Personajes.Count + 1}. Volver al menú anterior");
             Console.Write("Selecciona una opción: ");
             var opcion = Console.ReadLine();
@@ -200,7 +200,7 @@ public abstract class Program
                 if (seleccion >= 1 && seleccion <= jugador.Habilidades.Count)
                 {
                     var habilidad = jugador.Habilidades[seleccion - 1];
-                    var dano = habilidad.Usar();
+                    var dano = habilidad.Usar((PersonajeBase)jugador);
                     enemigo.RecibirDaño(dano);
                     Console.WriteLine($"Usaste {habilidad.Nombre} e hiciste {dano} de daño a {enemigo.Nombre}.");
                     Console.WriteLine("Presiona Enter para continuar.");

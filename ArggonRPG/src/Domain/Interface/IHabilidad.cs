@@ -1,7 +1,9 @@
-﻿namespace ArggonRPG.Domain.Interface;
+﻿using ArggonRPG.Domain.Entities;
+
+namespace ArggonRPG.Domain.Interface;
 
 public interface IHabilidad
 {
     string Nombre { get; }
-    int Usar();
+    int Usar(PersonajeBase personaje);
 }
