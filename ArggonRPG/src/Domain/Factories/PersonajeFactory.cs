@@ -4,12 +4,10 @@ public class PersonajeFactory
 {
     public static IPersonaje CrearPersonaje(string clase, string nombre)
     {
-        switch (clase)
+        return clase switch
         {
-            case "Guerrero":
-                return new Guerrero(nombre);
-            default:
-                throw new ArgumentException("Clase no válida");
-        }
+            "Guerrero" => new Guerrero(nombre),
+            _ => throw new ArgumentException("Clase no válida"),
+        };
     }
 }

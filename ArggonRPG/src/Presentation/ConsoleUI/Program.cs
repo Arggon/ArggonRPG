@@ -14,7 +14,7 @@
                 Console.WriteLine("2. Seleccionar Personaje");
                 Console.WriteLine("3. Salir");
                 Console.Write("Selecciona una opción: ");
-                string opcion = Console.ReadLine();
+                string? opcion = Console.ReadLine();
 
                 switch (opcion)
                 {
@@ -54,7 +54,7 @@
                 }
                 Console.WriteLine($"{personajes.Count + 1}. Volver al menú anterior");
                 Console.Write("Selecciona una opción: ");
-                string opcion = Console.ReadLine();
+                string? opcion = Console.ReadLine();
 
                 if (int.TryParse(opcion, out int seleccion))
                 {
@@ -85,7 +85,7 @@
                 Console.WriteLine("3. Ver estadísticas");
                 Console.WriteLine("4. Volver al menú anterior");
                 Console.Write("Selecciona una opción: ");
-                string opcion = Console.ReadLine();
+                string? opcion = Console.ReadLine();
 
                 switch (opcion)
                 {
@@ -133,7 +133,7 @@
                 Console.WriteLine("1. Atacar");
                 Console.WriteLine("2. Huir");
                 Console.Write("Selecciona una opción: ");
-                string opcion = Console.ReadLine();
+                string? opcion = Console.ReadLine();
 
                 switch (opcion)
                 {
@@ -182,7 +182,7 @@
                 }
                 Console.WriteLine($"{jugador.Habilidades.Count + 1}. Volver");
                 Console.Write("Selecciona una opción: ");
-                string opcion = Console.ReadLine();
+                string? opcion = Console.ReadLine();
 
                 if (int.TryParse(opcion, out int seleccion))
                 {
