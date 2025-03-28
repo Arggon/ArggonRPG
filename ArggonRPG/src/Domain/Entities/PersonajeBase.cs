@@ -2,7 +2,7 @@
 
 namespace ArggonRPG.Domain.Entities;
 
-public abstract class PersonajeBase(string nombre, string clase, int vidaInicial) : IPersonaje
+public abstract class PersonajeBase(string nombre, string clase, int vidaInicial) : IPersonaje, IDamageable
 {
     public string Nombre { get; private set; } = nombre;
     public string Clase { get; private set; } = clase;
@@ -11,7 +11,6 @@ public abstract class PersonajeBase(string nombre, string clase, int vidaInicial
 
     public void RecibirDaño(int daño)
     {
-        Vida -= daño;
-        if (Vida < 0) Vida = 0;
+        Vida = Math.Max(0, Vida - daño);
     }
-}
+} 

@@ -1,9 +1,9 @@
-﻿using ArggonRPG.Domain.Factories;
-using ArggonRPG.Domain.Interface;
+﻿using ArggonRPG.Domain.Interface;
 
 namespace ArggonRPG.Application.Commands;
 
-public class ComandoCrearPersonaje(List<IPersonaje> personajes) : IComando
+public class ComandoCrearPersonaje(List<IPersonaje> personajes, IPersonajeFactory personajeFactory)
+    : IComando
 {
     public void Ejecutar()
     {
@@ -19,7 +19,7 @@ public class ComandoCrearPersonaje(List<IPersonaje> personajes) : IComando
         var nombre = Console.ReadLine();
         if (nombre != null)
         {
-            var nuevoPersonaje = PersonajeFactory.CrearPersonaje("Guerrero", nombre);
+            var nuevoPersonaje = personajeFactory.CrearPersonaje("Guerrero", nombre);
             personajes.Add(nuevoPersonaje);
         }
 

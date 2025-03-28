@@ -1,9 +1,7 @@
 ﻿namespace ArggonRPG.Domain.Interface;
 
-public interface IEnemigo
+public interface IEnemigo : IDamageable
 {
     string Nombre { get; }
-    int Vida { get; }
     int Atacar();
-    void RecibirDaño(int daño);
 }

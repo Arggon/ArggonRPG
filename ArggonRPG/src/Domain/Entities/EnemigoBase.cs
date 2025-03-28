@@ -1,20 +1,21 @@
 ﻿using ArggonRPG.Domain.Interface;
+using ArggonRPG.Domain.Services;
 
 namespace ArggonRPG.Domain.Entities;
 
-public class EnemigoBase(string nombre, int vida) : IEnemigo
+public class EnemigoBase(string nombre, int vida, int dañoBase = 10) : IEnemigo
 {
     public string Nombre { get; private set; } = nombre;
     public int Vida { get; private set; } = vida;
+    protected int DañoBase { get; set; } = dañoBase;
 
-    public int Atacar()
+    public virtual int Atacar()
     {
-        return 10;
+        return DamageCalculator.CalcularDañoFinal(DañoBase);
     }
 
     public void RecibirDaño(int daño)
     {
-        Vida -= daño;
-        if (Vida < 0) Vida = 0;
+        Vida = Math.Max(0, Vida - daño);
     }
-}
+} 

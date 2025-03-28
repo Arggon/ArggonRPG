@@ -3,14 +3,14 @@ using ArggonRPG.Domain.Interface;
 
 namespace ArggonRPG.Domain.Factories;
 
-public abstract class PersonajeFactory
+public class PersonajeFactory : IPersonajeFactory
 {
-    public static IPersonaje CrearPersonaje(string clase, string nombre)
+    public IPersonaje CrearPersonaje(string clase, string nombre)
     {
         return clase switch
         {
             "Guerrero" => new Guerrero(nombre),
-            _ => throw new ArgumentException("Clase no válida"),
+            _ => throw new ArgumentException($"Clase no válida: {clase}")
         };
     }
-}
+} 

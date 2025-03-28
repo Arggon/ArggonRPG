@@ -1,15 +1,23 @@
 ﻿using ArggonRPG.Application.Commands;
+using ArggonRPG.Application.Configuration;
 using ArggonRPG.Domain.Entities;
 using ArggonRPG.Domain.Interface;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ArggonRPG.Presentation.ConsoleUI
 { 
     public abstract class Program
     {
         private static readonly List<IPersonaje> Personajes = [];
+        private static IServiceProvider? _serviceProvider;
 
         public static void Main()
         {
+            var services = new ServiceCollection();
+            services.ConfigureServices();
+            services.AddSingleton(Personajes);
+            _serviceProvider = services.BuildServiceProvider();
+
             while (true)
             {
                 Console.Clear();
@@ -23,7 +31,11 @@ namespace ArggonRPG.Presentation.ConsoleUI
                 switch (opcion)
                 {
                     case "1":
-                        new ComandoCrearPersonaje(Personajes).Ejecutar();
+                        if (_serviceProvider != null)
+                        {
+                            var comando = _serviceProvider.GetRequiredService<ComandoCrearPersonaje>();
+                            comando.Ejecutar();
+                        }
                         break;
                     case "2":
                         SeleccionarPersonaje();

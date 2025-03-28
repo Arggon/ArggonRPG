@@ -1,14 +1,16 @@
 ﻿using ArggonRPG.Domain.Interface;
+using ArggonRPG.Domain.Services;
 
 namespace ArggonRPG.Domain.Entities;
 
-public class HabilidadBase(string nombre, int dañoBase) : IHabilidad
+public abstract class HabilidadBase(string nombre, int dañoBase) : IHabilidad
 {
-    public string Nombre { get; private set; } = nombre;
-    private int DañoBase { get; set; } = dañoBase;
+    public string Nombre { get; protected set; } = nombre;
+    public int DañoBase { get; protected set; } = dañoBase;
+    protected float Multiplicador { get; set; } = 1.0f;
 
-    public int Usar()
+    public virtual int Usar()
     {
-        return DañoBase;
+        return DamageCalculator.CalcularDañoFinal(DañoBase, Multiplicador);
     }
-}
+} 
